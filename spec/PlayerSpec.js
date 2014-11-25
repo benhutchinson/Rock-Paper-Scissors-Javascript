@@ -7,7 +7,11 @@ describe('Player', function() {
     });
 
     it('should have a name', function() {
-        expect(player.name).toBe("Giorgia");
+      expect(player.name).toBe("Giorgia");
+    });
+
+    it('should be able to choose a weapon', function() {
+      
     });
 
 });
