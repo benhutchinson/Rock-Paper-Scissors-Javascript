@@ -11,37 +11,58 @@ function Game(player1, player2) {
   this.player2 = player2;
 };
 
-Game.prototype.winner = function() {
+Game.prototype.PAIRS = {
+  rock:   {beats: 'scissors'},
+  paper:  {beats: 'rock'},
+  scissors: {beats: 'paper'}
+}
 
-  if (this.player1.pick === this.player2.pick ) {
-    return null;
-  }
-
-  else if (this.player1.pick === "rock") {
-    if (this.player2.pick === "scissors") {
-      return this.player1;
-    }
-    else {
-      return this.player2;
-    }
-  }
-
-  else if (this.player1.pick === "scissors") {
-    if (this.player2.pick === "rock") {
-      return this.player2;
-    }
-    else {
-      return this.player1;
-    }
-  }
-
-  else {
-    if (this.player2.pick === "scissors") {
-      return this.player2;
-    }
-    else {
-      return this.player1;
-    }
-  }
-
+Game.prototype._isSamePick = function() {
+  return this.player1.pick === this.player2.pick;
 };
+
+Game.prototype.winner = function() {
+  if(this._isSamePick()) return null;
+
+  if(this.PAIRS[this.player1.pick]['beats'] === this.player2.pick){
+    return this.player1;
+  }
+  else {
+    return this.player2;
+  }
+};
+
+// Game.prototype.winner = function() {
+
+//   if (this.player1.pick === this.player2.pick ) {
+//     return null;
+//   }
+
+//   else if (this.player1.pick === "rock") {
+//     if (this.player2.pick === "scissors") {
+//       return this.player1;
+//     }
+//     else {
+//       return this.player2;
+//     }
+//   }
+
+//   else if (this.player1.pick === "scissors") {
+//     if (this.player2.pick === "rock") {
+//       return this.player2;
+//     }
+//     else {
+//       return this.player1;
+//     }
+//   }
+
+//   else {
+//     if (this.player2.pick === "scissors") {
+//       return this.player2;
+//     }
+//     else {
+//       return this.player1;
+//     }
+//   }
+
+// };
