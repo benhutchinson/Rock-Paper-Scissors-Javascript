@@ -1,78 +1,68 @@
-describe('Player', function() {
+describe("Rock-Paper-Scissors", function() {
 
-    var player;
+  var player1, player2, game;
 
-    beforeEach(function() {
-      player = new Player("Giorgia");
+  beforeEach(function() {
+    player1 = new Player('Sam');
+    player2 = new Player('Tony');
+    game = new Game(player1, player2);
+  });
+
+  describe('winning and losing', function() {
+    describe('rock', function() {
+      it('should beat scissors', function() {
+        player1.picks('rock');
+        player2.picks('scissors');
+        expect(game.winner()).toBe(player1);
+      });
+
+      it('should lose to paper', function() {
+        player1.picks('rock');
+        player2.picks('paper');
+        expect(game.winner()).toBe(player2);
+      });
+
     });
 
-    it('should have a name', function() {
-      expect(player.name).toBe("Giorgia");
+    describe('paper', function() {
+      it('should beat rock', function() {
+        player1.picks('paper');
+        player2.picks('rock');
+        expect(game.winner()).toBe(player1);
+      });
+
+      it('should lose to scissors', function() {
+        player1.picks('paper');
+        player2.picks('scissors');
+        expect(game.winner()).toBe(player2);
+      });
     });
 
-    it('should be able to choose a weapon', function() {
-      
-    });
+    describe('scissors', function() {
+      it('should beat paper', function() {
+        player1.picks('scissors');
+        player2.picks('paper');
+        expect(game.winner()).toBe(player1);
+      });
 
+      it('should lose to rock', function() {
+        player1.picks('scissors');
+        player2.picks('rock');
+        expect(game.winner()).toBe(player2);
+      });
+    });
+  });
+
+  describe('draws', function() {
+    describe('any identical picks', function() {
+      it('should result in no winner', function() {
+        var drawGameResults = ['rock', 'paper', 'scissors'].map(function(x) {
+          player1.picks(x);
+          player2.picks(x);
+          return game.winner();
+        });
+        expect(drawGameResults).toEqual([null, null, null]);
+      });
+    });
+  });
 });
-
-
-
-// describe("Player", function() {
-//   var player;
-//   var song;
-
-//   beforeEach(function() {
-//     player = new Player();
-//     song = new Song();
-//   });
-
-//   it("should be able to play a Song", function() {
-//     player.play(song);
-//     expect(player.currentlyPlayingSong).toEqual(song);
-
-//     //demonstrates use of custom matcher
-//     expect(player).toBePlaying(song);
-//   });
-
-//   describe("when song has been paused", function() {
-//     beforeEach(function() {
-//       player.play(song);
-//       player.pause();
-//     });
-
-//     it("should indicate that the song is currently paused", function() {
-//       expect(player.isPlaying).toBeFalsy();
-
-//       // demonstrates use of 'not' with a custom matcher
-//       expect(player).not.toBePlaying(song);
-//     });
-
-//     it("should be possible to resume", function() {
-//       player.resume();
-//       expect(player.isPlaying).toBeTruthy();
-//       expect(player.currentlyPlayingSong).toEqual(song);
-//     });
-//   });
-
-//   // demonstrates use of spies to intercept and test method calls
-//   it("tells the current song if the user has made it a favorite", function() {
-//     spyOn(song, 'persistFavoriteStatus');
-
-//     player.play(song);
-//     player.makeFavorite();
-
-//     expect(song.persistFavoriteStatus).toHaveBeenCalledWith(true);
-//   });
-
-//   //demonstrates use of expected exceptions
-//   describe("#resume", function() {
-//     it("should throw an exception if song is already playing", function() {
-//       player.play(song);
-
-//       expect(function() {
-//         player.resume();
-//       }).toThrowError("song is already playing");
-//     });
-//   });
-// });

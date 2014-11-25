@@ -2,26 +2,46 @@ function Player(name) {
   this.name = name;
 };
 
+Player.prototype.picks = function(pick) {
+  this.pick = pick;  
+};
 
-// function Player() {
-// }
-// Player.prototype.play = function(song) {
-//   this.currentlyPlayingSong = song;
-//   this.isPlaying = true;
-// };
+function Game(player1, player2) {
+  this.player1 = player1;
+  this.player2 = player2;
+};
 
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
-// };
+Game.prototype.winner = function() {
 
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
+  if (this.player1.pick === this.player2.pick ) {
+    return null;
+  }
 
-//   this.isPlaying = true;
-// };
+  else if (this.player1.pick === "rock") {
+    if (this.player2.pick === "scissors") {
+      return this.player1;
+    }
+    else {
+      return this.player2;
+    }
+  }
 
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };
+  else if (this.player1.pick === "scissors") {
+    if (this.player2.pick === "rock") {
+      return this.player2;
+    }
+    else {
+      return this.player1;
+    }
+  }
+
+  else {
+    if (this.player2.pick === "scissors") {
+      return this.player2;
+    }
+    else {
+      return this.player1;
+    }
+  }
+
+};
