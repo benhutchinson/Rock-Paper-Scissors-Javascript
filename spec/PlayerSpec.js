@@ -1,11 +1,12 @@
 describe("Rock-Paper-Scissors", function() {
 
-  var player1, player2, game;
+  var player1, player2, game, computer;
 
   beforeEach(function() {
     player1 = new Player('Sam');
     player2 = new Player('Tony');
     game = new Game(player1, player2);
+    computer = new Computer;
   });
 
   describe('winning and losing', function() {
@@ -63,6 +64,13 @@ describe("Rock-Paper-Scissors", function() {
         });
         expect(drawGameResults).toEqual([null, null, null]);
       });
+    });
+  });
+
+  describe('computer plays', function() {
+    it('should pick rock or paper or scissors', function() {
+      computer.picks();
+      expect(computer.pick).toEqual('rock','paper','scissors');
     });
   });
 });

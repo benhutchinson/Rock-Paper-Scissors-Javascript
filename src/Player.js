@@ -6,6 +6,25 @@ Player.prototype.picks = function(pick) {
   this.pick = pick;  
 };
 
+function Computer() {
+};
+
+Computer.prototype.picks = function() {
+  var choice = Math.random();
+  var randomPick = function() {   
+    if (choice <= 0.33) {
+        return "rock";
+    }
+    else if (0.34 <= choice <= 0.67 ) {
+        return "paper";
+    }
+    else {
+        return "scissors";
+    }
+  };
+  this.pick = randomPick();
+};
+
 function Game(player1, player2) {
   this.player1 = player1;
   this.player2 = player2;
@@ -31,6 +50,8 @@ Game.prototype.winner = function() {
     return this.player2;
   }
 };
+
+
 
 // Game.prototype.winner = function() {
 
