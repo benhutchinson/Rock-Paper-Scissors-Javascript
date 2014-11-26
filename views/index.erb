@@ -22,12 +22,18 @@
     .choices img {
       width: 19%;
       cursor: pointer;
-      opacity: 0.3;
+      opacity: 1;
       transition: 1.5s all ease;
+      -webkit-filter: grayscale(100%);
+      -moz-filter: grayscale(100%);
+      filter: grayscale(100%);
     }
 
     .choices img:hover {
       opacity: 1;
+      -webkit-filter: grayscale(0%);
+      -moz-filter: grayscale(0%);
+      filter: grayscale(0%);
     }
 
     h1 {
