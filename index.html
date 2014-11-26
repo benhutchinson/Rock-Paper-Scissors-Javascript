@@ -1,0 +1,74 @@
+<!doctype>
+<html>
+  <head>
+    <title>Rock Paper Scissors Lizard Spock</title>
+    <style>
+    body {
+      font-family: 'Helvetica Neue';
+      margin: 15px 0 0 30px;
+    }
+
+    .choices img {
+      width: 15%;
+      margin-right: 2.5%;
+      cursor: pointer;
+      opacity: 0;
+      transition: 1.5s all ease;
+    }
+
+    .choices img:hover {
+      opacity: 1;
+    }
+
+    h2, h3 {
+      text-transform: capitalize;
+    }
+
+    #results {
+      list-style: none;
+    }
+
+    #results li {
+      background: #999;
+      color: #fff;
+      font-size: 24px;
+      border-radius: 8px;
+      padding: 5px;
+      width: 80%;
+      margin-bottom: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors Lizard Spock</h1>
+    <div class='choices'>
+      <img src="http://maxcdn.thedesigninspiration.com/wp-content/uploads/2013/10/Despicable-Me-Minions-014.jpg" data-pick="rock">
+      <img src="http://fc02.deviantart.net/fs70/i/2013/338/8/4/british_minion_by_memanchi-d6wpvz0.jpg" data-pick="paper">
+      <img src="http://creativepool.com/marketing/images/minions-1.jpg" data-pick="scissors">
+      <img src="http://minionslovebananas.com/images/right-side/fruit_head_minion.jpg" data-pick="lizard">
+      <img src="http://media-cache-ec0.pinimg.com/736x/04/f2/8b/04f28b09fa7134f5703d3c68fc0b9f5c.jpg" data-pick="spock">
+    </div>
+
+    <ul id="results">
+    </ul>
+
+    <script src='src/Lizard.js'></script>
+    <script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+    <script>
+      $(document).ready(function(){
+        var giorgia = new Player('Giorgia');
+        var ben = new Player('Ben');
+        var rules = new Rules(giorgia, ben)
+
+        $('.choices img').on('click', function(){
+          console.log($(this));
+          giorgia.picks($(this).data('pick'));
+          ben.picks('rock');
+
+          $('#results').html(rules.winningMessage());
+          // $('#results').prepend('<li>' + game.winningMessage() + '</li>');
+        })
+      })
+    </script>
+  </body>
+</html>
