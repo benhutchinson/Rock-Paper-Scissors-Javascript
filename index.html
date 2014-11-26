@@ -86,9 +86,9 @@
           console.log($(this));
           giorgia.picks($(this).data('pick'));
           ben.picks('rock');
-        $('<li>'+rules.winningMessage()+'</li>').prependTo('#results').slideDown(1000);
-        // $('li:nth-child(2)').fadeTo(0.5);        
-        $('li:nth-child(3)').fadeOut(1000);
+        $('<li>'+rules.winningMessage()+'</li>').prependTo('#results').slideDown(1000);      
+        // $('li:nth-child(3)').fadeOut(1000);
+         $('li:nth-child(2)').animate({opacity: 0, fontSize: 0}, 3000);  
         })
       })
     </script>
