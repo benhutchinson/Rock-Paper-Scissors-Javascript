@@ -70,7 +70,7 @@ describe("Rock-Paper-Scissors", function() {
   describe('computer plays', function() {
     it('should pick rock or paper or scissors', function() {
       computer.picks();
-      expect(computer.pick).toEqual('rock','paper','scissors');
+      expect(game.PAIRS[computer.pick]).not.toBeUndefined();
     });
   });
 });
