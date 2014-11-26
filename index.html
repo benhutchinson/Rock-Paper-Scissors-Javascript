@@ -78,19 +78,23 @@
     <script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
     <script>
       $(document).ready(function(){
-        var giorgia = new Player('Giorgia');
-        var ben = new Player('Ben');
-        var rules = new Rules(giorgia, ben)
+        var giorgia = new Player('You');
+        // var ben = new Player('Ben');
+        var computer = new Computer;
+        var rules = new Rules(giorgia, computer)
 
         $('.choices img').on('click', function(){
-          console.log($(this));
           giorgia.picks($(this).data('pick'));
-          ben.picks('rock');
+          computer.picks();
         $('<li>'+rules.winningMessage()+'</li>').prependTo('#results').slideDown(1000);      
         // $('li:nth-child(3)').fadeOut(1000);
-         $('li:nth-child(2)').animate({opacity: 0, fontSize: 0}, 3000);  
-        })
-      })
+         $('li:nth-child(2)').animate({opacity: 0, fontSize: 0}, 3000, function(){
+            $(this).remove();
+          });
+
+          });
+        });
+      
     </script>
   </body>
 </html>

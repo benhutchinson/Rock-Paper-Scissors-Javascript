@@ -7,6 +7,7 @@ Player.prototype.picks = function(pick) {
 };
 
 function Computer() {
+  this.name = "FELONIUS GRU";
 };
 
 Computer.prototype.picks = function() {
