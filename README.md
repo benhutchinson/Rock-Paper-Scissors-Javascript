@@ -7,13 +7,15 @@ This week, we have been introduced to Javascript and JQuery.  The end goal of th
 
 ###Code Snippet
 
-We enjoyed learning about ```slideDown()``` and ```animate()``` in action.  After each play, a "winning message" is prepended to a list.  The previous message is then animated through opacity and fontSize adjustments before being deleted from the list to prevent the file size from becoming bloated.
+We enjoyed learning about ```slideDown()``` and ```animate()``` in action.  After each play, a "winning message" is prepended to a list.  The previous message is then animated through opacity and fontSize adjustments before being deleted from the list to prevent the file size from becoming too bloated.
 
 ``` javascript
 
   $('<li>'+rules.winningMessage()+'</li>').prependTo('#results').slideDown(1000);      
   
-  $('li:nth-child(2)').animate({opacity: 0, fontSize: 0}, 3000, function(){$(this).remove();});
+  $('li:nth-child(2)').animate({opacity: 0, fontSize: 0}, 3000, function(){
+    $(this).remove();
+    });
 
 ```
 
