@@ -76,31 +76,34 @@
       <img src="fruit_head_minion.jpg" data-pick="lizard">
       <img src="04f28b09fa7134f5703d3c68fc0b9f5c.jpg" data-pick="spock">
     </div>
-
     <ul id="results">
+      <template id = "list-item-template">
+        <li>{{message}}</li>
+      </template>
     </ul>
-
     <script src='./Lizard.js'></script>
     <script src='./jquery-2.1.1.min.js'></script>
+    <script src= 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js'></script>
     <script>
       $(document).ready(function(){
+        var removeListItem = function(){
+              $(this).remove();
+            };
+        var render = function(rules){
+          var html = $('#list-item-template').html();
+          var data = {message: rules.winningMessage()}
+          return Mustache.render(html, data);
+             };
         var giorgia = new Player('You');
-        // var ben = new Player('Ben');
         var computer = new Computer;
         var rules = new Rules(giorgia, computer)
-
         $('.choices img').on('click', function(){
           giorgia.picks($(this).data('pick'));
           computer.picks();
-        $('<li>'+rules.winningMessage()+'</li>').prependTo('#results').slideDown(1000);      
-        // $('li:nth-child(3)').fadeOut(1000);
-         $('li:nth-child(2)').animate({opacity: 0, fontSize: 0}, 3000, function(){
-            $(this).remove();
-          });
-
-          });
+          $(render(rules)).prependTo('#results').slideDown(1000);      
+          $('li:nth-child(2)').animate({opacity: 0, fontSize: 0}, 3000,removeListItem);
         });
-      
-    </script>
+      });    
+  </script>
   </body>
 </html>
