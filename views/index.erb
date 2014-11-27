@@ -1,7 +1,12 @@
 <!doctype>
 <html>
+
   <head>
+
     <title>WHO SAID RON BURGUNDY?</title>
+
+    <link rel="stylesheet" href="animations.css">
+
     <style>
 
     @font-face {
@@ -16,7 +21,7 @@
 
     .choices {
       text-align: center;
-      margin-bottom: 13%;
+      margin-bottom: 12%;
     }
 
     .choices img {
@@ -27,6 +32,7 @@
       -webkit-filter: grayscale(100%);
       -moz-filter: grayscale(100%);
       filter: grayscale(100%);
+      visibility: hidden;
     }
 
     .choices img:hover {
@@ -36,13 +42,25 @@
       filter: grayscale(0%);
     }
 
+    .picks {
+      width: 95%;
+      text-align: center;
+    }
+
+    .picks td {
+      width: 20%;
+      text-align: center;
+      color: black;
+      font-size: 2em;
+    }
+
     h1 {
       text-transform: uppercase;
       font-size: 4em;
       text-align: center;
-      color: #d35400;
+      color: #e67e22;
       letter-spacing: 2px; 
-      margin-bottom: 2em;
+      margin-bottom: 1.75em;
       line-height: 1em;
     }
 
@@ -56,34 +74,42 @@
 
     #results li {
       color: #2c3e50;
-      font-size: 4em;
+      font-size: 3.5em;
       text-transform: uppercase;
       padding: 5px;
-      margin-left: 20%;
-      margin-right: 20%; 
+      margin-left: 5%;
+      margin-right: 5%; 
       margin-bottom: 15px;
       text-align: center;
       display:none;
     }
+
     </style>
+
   </head>
+
   <body>
-    <h1>WHO SAID RON BURGUNDY?</h1>
+
+    <h1>WHO SAID <span id="weaponlist" style="color: #e74c3c">RON BURGUNDY</span>?</h1>
+
     <div class='choices'>
-      <img src="Despicable-Me-Minions-014.jpg" data-pick="rock">
-      <img src="british_minion_by_memanchi-d6wpvz0.jpg" data-pick="paper">
-      <img src="minions-1.jpg" data-pick="scissors">
-      <img src="fruit_head_minion.jpg" data-pick="lizard">
-      <img src="04f28b09fa7134f5703d3c68fc0b9f5c.jpg" data-pick="spock">
+      <img src="Despicable-Me-Minions-014.jpg" class="slideRight" data-pick="rock">
+      <img src="british_minion_by_memanchi-d6wpvz0.jpg" class="slideRight" data-pick="paper">
+      <img src="minions-1.jpg" class="bigEntrance" data-pick="scissors">
+      <img src="fruit_head_minion.jpg" class="slideUp" data-pick="lizard">
+      <img src="04f28b09fa7134f5703d3c68fc0b9f5c.jpg" class="slideLeft" data-pick="spock">
     </div>
+
     <ul id="results">
       <template id = "list-item-template">
         <li>{{message}}</li>
       </template>
     </ul>
+
     <script src='./Lizard.js'></script>
     <script src='./jquery-2.1.1.min.js'></script>
     <script src= 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js'></script>
+
     <script>
       $(document).ready(function(){
         var removeListItem = function(){
@@ -97,13 +123,26 @@
         var giorgia = new Player('You');
         var computer = new Computer;
         var rules = new Rules(giorgia, computer)
+       
         $('.choices img').on('click', function(){
           giorgia.picks($(this).data('pick'));
           computer.picks();
           $(render(rules)).prependTo('#results').slideDown(1000);      
           $('li:nth-child(2)').animate({opacity: 0, fontSize: 0}, 3000,removeListItem);
         });
+
+        $('.choices img').on('mouseover',function(){
+        console.log( $(this).data('pick') ); 
+          document.getElementById("weaponlist").innerHTML =  $(this).data('pick');                
+        });
+
+        $('.choices img').on('mouseleave',function(){
+        console.log( $(this).data('pick') ); 
+          document.getElementById("weaponlist").innerHTML =  "VERONICA CORNINGSTONE";                
+        });
       });    
   </script>
+
   </body>
+
 </html>
