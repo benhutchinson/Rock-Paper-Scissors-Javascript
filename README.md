@@ -40,3 +40,8 @@ We enjoyed learning about ```slideDown()``` and ```animate()``` in action.  Afte
 - Sinatra
 - CSS/HTML
 - Mustache
+
+###How This Could Be Improved
+- Refactoring.  e.g. CSS could be extracted into a separate file
+- File labels.  This repository holds a first and second version.  This should be more clearly distinguished were further users to build on this project.
+- Extended Jasmine tests.
