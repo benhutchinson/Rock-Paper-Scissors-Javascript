@@ -3,7 +3,7 @@ Rock-Paper-Scissors-Javascript
 
 Week 5: Introduction To Javascript
 
-This week, we have been introduced to Javascript and JQuery.  The end goal of the task was to replicate [Rock-Paper-Scissors-Lizard-Spock](http://en.wikipedia.org/wiki/Rock-paper-scissors-lizard-Spock) using Javascript for much of the logic and JQuery and CSS for transition and front-end effects.  We used Jasmine as a way of adhering to the test-driven-development philosophies and begun to use Javascript templating with Mustache as a way of templating and refactoring.  We have integrated an external animation stylesheet by [Justin Aguilar](http://www.justinaguilar.com/animations/) and also used the ```innerHTML``` syntax for the first time.  The end app is hosted on [Heroku](https://hidden-chamber-8418.herokuapp.com/) as a Sinatra app.
+This week, we have been introduced to Javascript and JQuery.  The end goal of the task was to replicate [Rock-Paper-Scissors-Lizard-Spock](http://en.wikipedia.org/wiki/Rock-paper-scissors-lizard-Spock) using Javascript for much of the logic and JQuery and CSS for transition and front-end effects.  We used Jasmine as a way of adhering to the test-driven-development philosophies and begun to use Javascript templating with Mustache as a way of templating and refactoring.  We have integrated an external animation stylesheet by [Justin Aguilar](http://www.justinaguilar.com/animations/) and also used the ```innerHTML``` syntax for the first time.  The end app is hosted on [Heroku](https://agile-everglades-6175.herokuapp.com/) as a Sinatra app.
 
 ###Code Snippet
 
